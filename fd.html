@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr=new XMLHttpRequest();
+    xhr.open("post","fd.php");
+    var fd=new FormData();
+    var member='{"username":"tom","gender":"female"}';
+    fd.append("member",member);
+    xhr.send(fd);
+    xhr.addEventListener("readystatechange",function(){
+        if(xhr.readyState==4){
+            if(xhr.status==200){
+                console.log(JSON.parse(xhr.responseText));
+                console.log(JSON.parse(xhr.responseText).username);
+                console.log(typeof xhr.responseText);
+                console.log(xhr.responseText);
+            }
+        }
+    })
+</script>
+</body>
+</html>
